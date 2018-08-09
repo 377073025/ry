@@ -109,7 +109,7 @@ public class DeptServiceImplTest
     public void testSelectDeptById() throws Exception
     {
         // TODO: Test goes here...
-        Assert.assertNotNull("若依集团不存在", deptService.selectDeptById(100L));
+        Assert.assertNotNull("排课集团不存在", deptService.selectDeptById(100L));
     }
 
     /**

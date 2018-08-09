@@ -18,7 +18,6 @@ import com.ruoyi.framework.aspectj.lang.constant.BusinessType;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.framework.web.page.TableDataInfo;
-import com.ruoyi.project.system.post.service.IPostService;
 import com.ruoyi.project.system.role.service.IRoleService;
 import com.ruoyi.project.system.user.domain.User;
 import com.ruoyi.project.system.user.service.IUserService;
@@ -39,9 +38,6 @@ public class UserController extends BaseController
 
     @Autowired
     private IRoleService roleService;
-
-    @Autowired
-    private IPostService postService;
 
     @RequiresPermissions("system:user:view")
     @GetMapping()
@@ -85,7 +81,6 @@ public class UserController extends BaseController
     public String add(ModelMap mmap)
     {
         mmap.put("roles", roleService.selectRoleAll());
-        mmap.put("posts", postService.selectPostAll());
         return prefix + "/add";
     }
 
@@ -114,7 +109,6 @@ public class UserController extends BaseController
     {
         mmap.put("user", userService.selectUserById(userId));
         mmap.put("roles", roleService.selectRolesByUserId(userId));
-        mmap.put("posts", postService.selectPostsByUserId(userId));
         return prefix + "/edit";
     }
 

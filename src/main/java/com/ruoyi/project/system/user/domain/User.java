@@ -77,9 +77,6 @@ public class User extends BaseEntity
     /** 角色组 */
     private Long[] roleIds;
 
-    /** 岗位组 */
-    private Long[] postIds;
-
     public Long getUserId()
     {
         return userId;
@@ -271,16 +268,6 @@ public class User extends BaseEntity
         this.roleIds = roleIds;
     }
 
-    public Long[] getPostIds()
-    {
-        return postIds;
-    }
-
-    public void setPostIds(Long[] postIds)
-    {
-        this.postIds = postIds;
-    }
-
     @Override
     public String toString()
     {
@@ -288,7 +275,7 @@ public class User extends BaseEntity
                 + ", userName=" + userName + ", email=" + email + ", phonenumber=" + phonenumber + ", sex=" + sex
                 + ", avatar=" + avatar + ", password=" + password + ", salt=" + salt + ", status=" + status
                 + ", delFlag=" + delFlag + ", loginIp=" + loginIp + ", loginDate=" + loginDate + ", dept=" + dept
-                + ", roleIds=" + Arrays.toString(roleIds) + ", postIds=" + Arrays.toString(postIds) + "]";
+                + ", roleIds=" + Arrays.toString(roleIds) + "]";
     }
 
 }
