@@ -25,7 +25,7 @@ public class CommonController
     public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request)
     {
         String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
-        try
+        try 
         { 
             String filePath = ResourceUtils.getURL("classpath:").getPath() + "static/file/" + fileName;
 
