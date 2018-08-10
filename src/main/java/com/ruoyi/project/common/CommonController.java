@@ -26,7 +26,7 @@ public class CommonController
     {
         String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
         try
-        {
+        { 
             String filePath = ResourceUtils.getURL("classpath:").getPath() + "static/file/" + fileName;
 
             response.setCharacterEncoding("utf-8");
