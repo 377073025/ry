@@ -20,7 +20,7 @@ import com.ruoyi.common.utils.file.FileUtils;
 public class CommonController
 {
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
-
+ 
     @RequestMapping("common/download")
     public void fileDownload(String fileName, Boolean delete, HttpServletResponse response, HttpServletRequest request)
     {
