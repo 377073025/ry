@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.source.mapper.SourceMapper">
+    
+    <resultMap type="Source" id="SourceResult">
+        <result property="id"    column="id"    />
+        <result property="test1"    column="test1"    />
+        <result property="test2"    column="test2"    />
+    </resultMap>
+	
+	<sql id="selectSourceVo">
+        select id, test1, test2 from sys_source
+    </sql>
+	
+    <select id="selectSourceList" parameterType="Source" resultMap="SourceResult">
+        <include refid="selectSourceVo"/>
+        <where>  
+            <if test="id != null and id != ''"> and id = #{id}</if>
+             <if test="test1 != null and test1 != ''"> and test1 = #{test1}</if>
+             <if test="test2 != null and test2 != ''"> and test2 = #{test2}</if>
+         </where>
+    </select>
+    
+    <select id="selectSourceById" parameterType="Integer" resultMap="SourceResult">
+        <include refid="selectSourceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertSource" parameterType="Source">
+        insert into sys_source
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">id,</if>
+			<if test="test1 != null and test1 != '' ">test1,</if>
+			<if test="test2 != null and test2 != '' ">test2,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">#{id},</if>
+			<if test="test1 != null and test1 != ''">#{test1},</if>
+			<if test="test2 != null and test2 != ''">#{test2},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateSource" parameterType="Source">
+        update sys_source
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="test1 != null  and test1 != ''  ">test1 = #{test1},</if>
+            <if test="test2 != null  and test2 != ''  ">test2 = #{test2},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteSourceById" parameterType="Integer">
+        delete from sys_source where id = #{id}
+    </delete>
+	
+    <delete id="deleteSourceByIds" parameterType="String">
+        delete from sys_source where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
